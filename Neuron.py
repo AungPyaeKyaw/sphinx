@@ -1,5 +1,6 @@
 from Cortex import *
 import math
+import Log
 
 
 class Neuron:
@@ -17,26 +18,24 @@ class Neuron:
             self.output = inputs[0]
 
     def calculate_output(self, inputs, weights):
-        print('inputs and weights')
-        print(inputs)
-        print(weights)
+        Log.d('inputs and weights')
+        Log.d(inputs)
+        Log.d(weights)
         result = 0.0
         for i in range(0, len(inputs)):
             result += inputs[i] * float(weights[i])
         result += self.bias
-        print('before activation %f' % result)
+        Log.d('before activation %f' % result)
         self.output = self.activation(result)
-        print('calculated output %f' % self.output)
+        Log.d('calculated output %f' % self.output)
         return self.output
 
     def calculate_error(self, expected_output):
         self.error = self.output * (1 - self.output) * (expected_output - self.output)
-        print('error %f' % self.error)
+        Log.d('error %f' % self.error)
         return self.error
 
     def calculate_hidden_error(self, errors, weights):
-        print('next layer error ')
-        print(errors)
         error_sum = 0
         for i in range(0, len(errors)):
             error_sum += errors[i] * weights[i]
