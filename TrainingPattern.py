@@ -1,4 +1,4 @@
-class TrainingPattern:
+class TrainingPattern(object):
     inputs = []
     outputs = []
 

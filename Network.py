@@ -3,16 +3,14 @@ import Log
 import Utils
 
 
-class Network:
-    errors_history = []
-    layers = []
-    learning_rate = 0.0
+class Network(object):
 
     def __init__(self, layers, learning_rate):
+        self.errors_history = []
         self.layers = layers
         self.learning_rate = learning_rate
 
-    def train(self, training_pattern, iteration=-1, min_error=0.003):
+    def train(self, training_pattern, iteration=-1, min_error=0.003, save_weight_per_ite=-1):
         if iteration == -1:
             Log.i('Training method is in minimum error mode.')
             i = 0
@@ -22,6 +20,7 @@ class Network:
                     self.backward(training_pattern[j].outputs)
                 Log.i('Min Error Mode : Iteration %d. Error %f' % (i, self.get_error()))
                 i += 1
+            self.save_weight('iter=%s_min_error_mode' % i)
         else:
             Log.i('Training method is in iteration mode.')
             for i in range(0, iteration):
@@ -30,16 +29,21 @@ class Network:
                     self.backward(training_pattern[j].outputs)
                 self.errors_history.append(self.get_error())
                 Log.i('Iteration %d. Error %f' % (i, self.get_error()))
+                if save_weight_per_ite != -1 and save_weight_per_ite < iteration:
+                    self.save_weight('iter=%s_iter_mode' % i)
+            self.save_weight('iter=%s_iter_mode' % i)
 
     def forward(self, inputs):
-
+        # Log.i('forward inputs %s' % inputs)
         for i in range(0, len(self.layers)):
             current_layer = self.layers[i]
-            Log.d('Layer ::  %i, Layer Type :: %s' % (i, current_layer.layer_type))
+            # Log.i('Layer ::  %i, Layer Type :: %s' % (i, current_layer.layer_type))
             if current_layer.layer_type == LayerType.INPUT:
+                # Log.i('input length %s , neuron length %s' % (len(inputs), len(current_layer.neurons)))
                 if len(inputs) > 0 and len(inputs) == len(current_layer.neurons):
                     for j in range(0, len(current_layer.neurons)):
-                        current_layer.neurons[i].inputs.append(inputs[j])
+                        # Log.i('setting output value from input to input layer %s' % inputs[j])
+                        current_layer.neurons[j].output = inputs[j]
                 else:
                     Log.w('No input to input layer neurons.')
             elif current_layer.layer_type != LayerType.INPUT:
@@ -52,22 +56,27 @@ class Network:
         for i in range(len(self.layers) - 1, -1, -1):
             if self.layers[i].layer_type == LayerType.OUTPUT:
                 self.layers[i].calculate_errors(expected_outputs)
-            elif self.layers[i].layer_type == LayerType.HIDDEN:
+            else:
                 next_layer = self.layers[i + 1]
                 self.layers[i].calculate_hidden_errors(next_layer)
 
         # update weights and bias
-        for i in range(1, len(self.layers)):
+        for i in range(0, len(self.layers)):
+            # Log.i('updating weights layer %s' % i)
             for j in range(0, len(self.layers[i].synapses)):
+                # Log.i('current synapse %s' % j)
                 # j represents both synapse and neuron
                 current_synapse = self.layers[i].synapses[j]
                 current_neuron = self.layers[i].neurons[j]
+                # Log.i('current neuron error %s' % current_neuron.error)
                 for k in range(0, len(current_synapse.weights)):
                     # k represents connections with previous
                     # delta weight = learning_rate * error of current neuron * output of previous neuron
+                    # Log.i('previous output layer=(%s) %s' % (i-1, self.layers[i - 1].neurons[k].output))
                     delta = self.learning_rate * current_neuron.error * \
                             self.layers[i - 1].neurons[k].output
                     # update current weight
+                    # Log.i('current weight %s , delta %s' % (current_synapse.weights[k], delta))
                     current_synapse.weights[k] = current_synapse.weights[k] + delta
 
                 # update bias
@@ -117,3 +126,31 @@ class Network:
         self.forward(inputs)
         self.print_result()
         return Utils.max_index(self.get_result())
+
+    def save_weight(self, name="default"):
+        ff = open("weights_%s.txt" % name, "x")
+        for i in range(1, len(self.layers)):
+            current_layer = self.layers[i]
+            for j in current_layer.synapses:
+                current_synapse = j
+                for k in current_synapse.weights:
+                    ff.write("%s," % k)
+            for l in current_layer.neurons:
+                ff.write("%s," % l.bias)
+        ff.close()
+
+    def load_weight(self, name=""):
+        f = open(name)
+        data = f.read().split(',')
+        f.close()
+        index = 0
+        for i in range(1, len(self.layers)):
+            current_layer = self.layers[i]
+            for j in current_layer.synapses:
+                current_synapse = j
+                for k in current_synapse.weights:
+                    k = float(data[index])
+                    index += 1
+            for l in current_layer.neurons:
+                l.bias = float(data[index])
+                index += 1

@@ -1,0 +1,5 @@
+f=open('weights.txt')
+data=f.read()
+print(data)
+layer=data.split(',')
+print(layer)

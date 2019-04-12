@@ -1,6 +1,6 @@
 import logging
 
-debug = True
+debug = False
 info = True
 FORMAT = '%(asctime)-15s %(level)'
 logging.basicConfig(format=FORMAT)
@@ -23,5 +23,5 @@ def w(msg):
 
 
 def d(msg):
-    if not debug:
-        print('%s %s' % ('[Warn]', msg))
+    if debug:
+        print('%s %s' % ('[Debug]', msg))

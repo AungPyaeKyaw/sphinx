@@ -1,5 +1,6 @@
 import json
 from Network import *
+import numpy as np
 
 
 def save(data):
@@ -27,3 +28,6 @@ def max_index(inputs):
             max_i = i
             max_v = inputs[i]
     return max_i
+
+def random():
+    return np.random.rand()
