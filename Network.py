@@ -5,7 +5,8 @@ import Utils
 
 class Network(object):
 
-    def __init__(self, layers, learning_rate):
+    def __init__(self, layers, learning_rate, name="default"):
+        self.name = name
         self.errors_history = []
         self.layers = layers
         self.learning_rate = learning_rate
@@ -20,7 +21,7 @@ class Network(object):
                     self.backward(training_pattern[j].outputs)
                 Log.i('Min Error Mode : Iteration %d. Error %f' % (i, self.get_error()))
                 i += 1
-            self.save_weight('iter=%s_min_error_mode' % i)
+            self.save_weight('%s_iter=%s_min_error_mode' % (self.name, i))
         else:
             Log.i('Training method is in iteration mode.')
             for i in range(0, iteration):
@@ -30,8 +31,9 @@ class Network(object):
                 self.errors_history.append(self.get_error())
                 Log.i('Iteration %d. Error %f' % (i, self.get_error()))
                 if save_weight_per_ite != -1 and save_weight_per_ite < iteration:
-                    self.save_weight('iter=%s_iter_mode' % i)
-            self.save_weight('iter=%s_iter_mode' % i)
+                    if i % save_weight_per_ite == 0:
+                        self.save_weight('iter=%s_iter_mode' % i)
+            self.save_weight('%s_iter=%s_iter_mode' % (self.name, i))
 
     def forward(self, inputs):
         # Log.i('forward inputs %s' % inputs)
@@ -128,7 +130,7 @@ class Network(object):
         return Utils.max_index(self.get_result())
 
     def save_weight(self, name="default"):
-        ff = open("weights_%s.txt" % name, "x")
+        ff = open("weights_%s.txt" % name, "w")
         for i in range(1, len(self.layers)):
             current_layer = self.layers[i]
             for j in current_layer.synapses:

@@ -30,5 +30,10 @@ def max_index(inputs):
             max_v = inputs[i]
     return max_i
 
+
 def rnd():
-    return random.uniform(-1,1)
+    return random.uniform(-1, 1)
+
+
+def normalize(value):
+    return value * 0.001

@@ -13,8 +13,8 @@ def main():
 
     # Load MNIST data
     x, y = loadlocal_mnist(
-        labels_path='c:\\data\\temp\\labels.idx1-ubyte',
-        images_path='c:\\data\\temp\\data.idx3-ubyte'
+        images_path='/Users/aungpyaekyaw/Downloads/images',
+        labels_path='/Users/aungpyaekyaw/Downloads/class'
     )
 
     # print('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
@@ -30,13 +30,12 @@ def main():
     network = Network(layers, 0.3)
     Log.debug = False
     patterns = []
-    for i in range(0, 1):
-        cl_label =[0]
-        if y[i] == 5:
-            cl_label=[1]
+    for i in range(0, len(x)):
+        cl_label = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        cl_label[y[i]] = 1
         patterns.append(TrainingPattern(x[i], cl_label))
 
-    network.train(patterns, 1,save_weight_per_ite=10)
+    network.train(patterns, 100, save_weight_per_ite=10)
     network.predict(x[0])
     network.print_errors()
     pyp.plot(network.errors_history)
