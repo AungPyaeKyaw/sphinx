@@ -22,21 +22,22 @@ class Neuron(object):
         for i in range(0, len(inputs)):
             result += inputs[i] * float(weights[i])
         result += self.bias
-        Log.d('before activation %f' % result)
+        Log.d('before activation %f' % result, this_only=True)
         self.output = self.activation(result)
-        Log.d('calculated output %f' % self.output)
+        Log.d('calculated output %f' % self.output,this_only=True)
         return self.output
 
     def calculate_error(self, expected_output):
-        Log.d('expected output %s , actual output %s' %(expected_output,self.output))
+        Log.d('expected output %s , actual output %s' %(expected_output,self.output), this_only=True)
         self.error = self.output * (1 - self.output) * (expected_output - self.output)
-        Log.d('error at output layer %f' % self.error)
+        Log.d('error at output layer %f' % self.error, this_only=True)
         return self.error
 
     def calculate_hidden_error(self, errors, weights):
         error_sum = 0
         for i in range(0, len(errors)):
             error_sum += errors[i] * weights[i]
+        Log.i('error sum %f' % error_sum)
         self.error = self.output * (1 - self.output) * error_sum
         Log.d('error at hidden layer %f' % self.error)
         return self.error

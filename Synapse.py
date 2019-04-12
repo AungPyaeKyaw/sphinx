@@ -8,9 +8,9 @@ class Synapse(object):
         self.weights = []
         if weight_count > 0 and random_weight is True:
             for i in range(0, weight_count):
-                rnd = Utils.random()
+                rnd = Utils.rnd()
                 # Log.d("Adding random weight %f at index %d" % (rnd, i))
-                self.weights.append(float("{:10.4f}".format(rnd)))
+                self.weights.append(rnd)
 
         else:
             self.weights = weights

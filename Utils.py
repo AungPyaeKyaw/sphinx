@@ -1,4 +1,5 @@
 import json
+import random
 from Network import *
 import numpy as np
 
@@ -29,5 +30,5 @@ def max_index(inputs):
             max_v = inputs[i]
     return max_i
 
-def random():
-    return np.random.rand()
+def rnd():
+    return random.uniform(-1,1)
