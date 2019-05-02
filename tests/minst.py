@@ -19,11 +19,10 @@ def main():
 
     # print('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
     # print('\n class ', y[0])
-    # print(len(x[0]))
 
     input_layer = Layer(neuron_count=784, layer_type=LayerType.INPUT)
     hidden_layer = Layer(neuron_count=392, synapse_count=392, weight_per_synapse=784, layer_type=LayerType.HIDDEN)
-    output_layer = Layer(neuron_count=1, synapse_count=1, weight_per_synapse=392, layer_type=LayerType.OUTPUT)
+    output_layer = Layer(neuron_count=10, synapse_count=10, weight_per_synapse=392, layer_type=LayerType.OUTPUT)
 
     layers = [input_layer, hidden_layer, output_layer]
 
@@ -33,13 +32,16 @@ def main():
     for i in range(0, len(x)):
         cl_label = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         cl_label[y[i]] = 1
-        patterns.append(TrainingPattern(x[i], cl_label))
+        data = []
+        for j in x[i]:
+            data.append(j/255)
+        patterns.append(TrainingPattern(data, cl_label))
 
-    network.train(patterns, 100, save_weight_per_ite=10)
+    network.train(patterns, 1, save_weight_per_ite=10)
     network.predict(x[0])
-    network.print_errors()
-    pyp.plot(network.errors_history)
-    pyp.show()
+    # network.print_errors()
+    # pyp.plot(network.errors_history)
+    # pyp.show()
 
 
 if __name__ == "__main__":

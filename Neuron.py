@@ -23,9 +23,6 @@ class Neuron(object):
         for i in range(0, len(inputs)):
             result += inputs[i] * float(weights[i])
         result += self.bias
-        Log.d('before activation %f' % result, this_only=True)
-        result = Utils.normalize(result)
-        Log.d('after normalized %f' % result, this_only=True)
         self.output = self.activation(result)
         Log.d('calculated output %f' % self.output, this_only=True)
         return self.output
