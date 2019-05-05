@@ -37,7 +37,7 @@ class Neuron(object):
         error_sum = 0
         for i in range(0, len(errors)):
             error_sum += errors[i] * weights[i]
-        Log.i('error sum %f' % error_sum, this_only=True)
+        Log.d('error sum %f' % error_sum, this_only=True)
         self.error = self.output * (1 - self.output) * error_sum
         Log.d('error at hidden layer %f' % self.error)
         return self.error

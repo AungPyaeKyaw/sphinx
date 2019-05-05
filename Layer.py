@@ -17,7 +17,7 @@ class Layer(object):
             Log.i("Creating Layer with %d neurons." % neuron_count)
             for i in range(0, neuron_count):
                 self.neurons.append(Neuron())
-            Log.i('debug neuron count %s' % len(self.neurons))
+            Log.d('debug neuron count %s' % len(self.neurons))
         self.layer_type = layer_type
 
         if len(synapses) > 0:

@@ -2,7 +2,11 @@ import logging
 
 debug = False
 info = True
-only = True
+
+# control when to output the specific part of the program
+# use with ths_only in i()
+only = False
+
 FORMAT = '%(asctime)-15s %(level)'
 logging.basicConfig(format=FORMAT)
 logger = logging.getLogger('sphinx')

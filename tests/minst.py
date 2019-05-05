@@ -13,12 +13,11 @@ def main():
 
     # Load MNIST data
     x, y = loadlocal_mnist(
-        images_path='/Users/aungpyaekyaw/Downloads/images',
-        labels_path='/Users/aungpyaekyaw/Downloads/class'
+        images_path='images',
+        labels_path='class'
     )
 
-    # print('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
-    # print('\n class ', y[0])
+    Log.i('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
 
     input_layer = Layer(neuron_count=784, layer_type=LayerType.INPUT)
     hidden_layer = Layer(neuron_count=392, synapse_count=392, weight_per_synapse=784, layer_type=LayerType.HIDDEN)
@@ -29,14 +28,15 @@ def main():
     network = Network(layers, 0.3)
     Log.debug = False
     patterns = []
+    Log.i('Loading data...')
     for i in range(0, len(x)):
         cl_label = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         cl_label[y[i]] = 1
-        data = []
         for j in x[i]:
-            data.append(j/255)
-        patterns.append(TrainingPattern(data, cl_label))
+            x[i] = j/255
+        patterns.append(TrainingPattern(x[i], cl_label))
 
+    Log.i('Loading data finished')
     network.train(patterns, 1, save_weight_per_ite=10)
     network.predict(x[0])
     # network.print_errors()
