@@ -15,7 +15,7 @@ def main():
     # Load MNIST data
     x, y = loadlocal_mnist(
         images_path='images',
-        labels_path='label'
+        labels_path='labels'
     )
 
     Log.i('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
