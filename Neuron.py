@@ -20,9 +20,9 @@ class Neuron(object):
         Log.d('inputs and weights')
         Log.d(inputs)
         Log.d(weights)
-        np_inputs=np.array(inputs)
-        np_weights=np.array(weights)
-       	result = np.dot(np_inputs,np_weights)
+        np_inputs = np.array(inputs)
+        np_weights = np.array(weights)
+        result = np.dot(np_inputs, np_weights)
         result += self.bias
         self.output = self.activation(result)
         Log.d('calculated output %f' % self.output, this_only=True)
@@ -35,9 +35,9 @@ class Neuron(object):
         return self.error
 
     def calculate_hidden_error(self, errors, weights):
-        error_sum = 0
-        for i in range(0, len(errors)):
-            error_sum += errors[i] * weights[i]
+        np_errors = np.array(errors)
+        np_weights = np.array(weights)
+        error_sum = np.dot(np_errors, np_weights)
         Log.d('error sum %f' % error_sum, this_only=True)
         self.error = self.output * (1 - self.output) * error_sum
         Log.d('error at hidden layer %f' % self.error)
