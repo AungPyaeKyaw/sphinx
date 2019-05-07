@@ -20,9 +20,9 @@ class Neuron(object):
         Log.d('inputs and weights')
         Log.d(inputs)
         Log.d(weights)
-	np_inputs=np.array(inputs)
-	np_weights=np.array(weights)
-        result = np.dot(np_inputs,np_weights)
+        np_inputs=np.array(inputs)
+        np_weights=np.array(weights)
+       	result = np.dot(np_inputs,np_weights)
         result += self.bias
         self.output = self.activation(result)
         Log.d('calculated output %f' % self.output, this_only=True)
