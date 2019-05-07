@@ -14,8 +14,8 @@ def main():
     Log.i('Sphinx is starting....')
     # Load MNIST data
     x, y = loadlocal_mnist(
-        images_path='images',
-        labels_path='labels'
+        images_path='tests/images',
+        labels_path='tests/labels'
     )
 
     Log.i('Dimensions: %s  x %s' % (x.shape[0], x.shape[1]))
@@ -27,8 +27,8 @@ def main():
     layers = [input_layer, hidden_layer, output_layer]
 
     network = Network(layers, 0.3)
-    if len(sys.argv) > 0:
-        Log.debug = bool(sys.argv[0])
+    if len(sys.argv) == 2:
+        Log.debug = bool(sys.argv[1])
     else:
         Log.debug = False
     patterns = []
