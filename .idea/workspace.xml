@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b56e6ae-97d2-4154-a8ad-b22e4d342775" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/images" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Log.py" beforeDir="false" afterPath="$PROJECT_DIR$/Log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neuron.py" beforeDir="false" afterPath="$PROJECT_DIR$/Neuron.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/minst.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/minst.py" afterDir="false" />
-    </list>
+    <list default="true" id="3b56e6ae-97d2-4154-a8ad-b22e4d342775" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +14,31 @@
     <SUITE FILE_PATH="coverage/Cortex$juice.coverage" NAME="juice Coverage Results" MODIFIED="1553408247654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/minst.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-23">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Log.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,13 +77,13 @@
         <option value="$PROJECT_DIR$/Network.py" />
         <option value="$PROJECT_DIR$/tests/codefights.py" />
         <option value="$PROJECT_DIR$/Log.py" />
-        <option value="$PROJECT_DIR$/tests/minst.py" />
         <option value="$PROJECT_DIR$/Neuron.py" />
         <option value="$PROJECT_DIR$/Layer.py" />
+        <option value="$PROJECT_DIR$/tests/minst.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="824" />
@@ -317,7 +333,7 @@
       <workItem from="1556780429834" duration="5000" />
       <workItem from="1556851692383" duration="577000" />
       <workItem from="1556852283391" duration="1735000" />
-      <workItem from="1557040289895" duration="597000" />
+      <workItem from="1557040289895" duration="2814000" />
     </task>
     <task id="LOCAL-00001" summary="update.">
       <created>1555046054937</created>
@@ -330,7 +346,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29156000" />
+    <option name="totallyTimeSpent" value="31373000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -342,7 +358,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="824" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="824" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29256082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -417,7 +433,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sphinx$Iris.coverage" NAME="Iris Coverage Results" MODIFIED="1554971896269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sphinx$codefights.coverage" NAME="codefights Coverage Results" MODIFIED="1556273087101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/sphinx$minst.coverage" NAME="minst Coverage Results" MODIFIED="1557040596491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/sphinx$minst.coverage" NAME="minst Coverage Results" MODIFIED="1557043445493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-967358500/builtins.py" />
@@ -463,19 +479,6 @@
           <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/minst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -548,13 +551,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Layer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -562,6 +558,23 @@
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/minst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

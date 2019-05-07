@@ -2,6 +2,7 @@ from Cortex import *
 import math
 import Log
 import Utils
+import numpy as np
 
 
 class Neuron(object):
@@ -19,9 +20,9 @@ class Neuron(object):
         Log.d('inputs and weights')
         Log.d(inputs)
         Log.d(weights)
-        result = 0.0
-        for i in range(0, len(inputs)):
-            result += inputs[i] * float(weights[i])
+	np_inputs=np.array(inputs)
+	np_weights=np.array(weights)
+        result = np.dot(np_inputs,np_weights)
         result += self.bias
         self.output = self.activation(result)
         Log.d('calculated output %f' % self.output, this_only=True)
