@@ -26,6 +26,7 @@ class Network(object):
             Log.i('Training method is in iteration mode.')
             for i in range(0, iteration):
                 for j in range(0, len(training_pattern)):
+                    Log.i('Itertation %s, Data Sample %s' %(i,j))
                     self.forward(training_pattern[j].inputs)
                     self.backward(training_pattern[j].outputs)
                 self.errors_history.append(self.get_error())
@@ -120,8 +121,10 @@ class Network(object):
     def get_error(self):
         error = 0.0
         output_layer = self.layers[len(self.layers) - 1]
+        Log.d('printing output layer errors.', this_only=True)
         for i in range(0, len(output_layer.neurons)):
             error += output_layer.neurons[i].error
+            Log.d(output_layer.neurons[i].error, this_only=True)
         return error / len(output_layer.neurons)
 
     def predict(self, inputs):

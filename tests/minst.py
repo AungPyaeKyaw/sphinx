@@ -27,6 +27,7 @@ def main():
     layers = [input_layer, hidden_layer, output_layer]
 
     network = Network(layers, 0.3)
+    Log.only = False
     if len(sys.argv) == 2:
         Log.debug = bool(sys.argv[1])
     else:
@@ -36,9 +37,9 @@ def main():
     for i in range(0, len(x)):
         cl_label = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         cl_label[y[i]] = 1
-        c_x = np.divide(x[i], 255)
+        np_x = np.array(x[i])
+        c_x = np.divide(np_x, 255)
         patterns.append(TrainingPattern(c_x, cl_label))
-
     Log.i('Loading data finished')
     network.train(patterns, 10, save_weight_per_ite=1)
     network.predict(x[0])

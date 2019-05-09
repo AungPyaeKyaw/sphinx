@@ -18,8 +18,8 @@ class Neuron(object):
 
     def calculate_output(self, inputs, weights):
         Log.d('inputs and weights')
-        Log.d(inputs)
-        Log.d(weights)
+        # Log.d(inputs)
+        # Log.d(weights)
         np_inputs = np.array(inputs)
         np_weights = np.array(weights)
         result = np.dot(np_inputs, np_weights)
@@ -29,16 +29,17 @@ class Neuron(object):
         return self.output
 
     def calculate_error(self, expected_output):
-        Log.d('expected output %s , actual output %s' % (expected_output, self.output), this_only=True)
+        Log.d('expected output %s , actual output %s' % (expected_output, self.output), this_only=False)
         self.error = self.output * (1 - self.output) * (expected_output - self.output)
-        Log.d('error at output layer %f' % self.error, this_only=True)
+        Log.d('error at output layer %f' % self.error, this_only=False)
         return self.error
 
     def calculate_hidden_error(self, errors, weights):
         np_errors = np.array(errors)
         np_weights = np.array(weights)
         error_sum = np.dot(np_errors, np_weights)
-        Log.d('error sum %f' % error_sum, this_only=True)
+        Log.d('error sum %f' % error_sum, this_only=False)
+        Log.d('error sum %f, output %f' % (error_sum, self.output))
         self.error = self.output * (1 - self.output) * error_sum
         Log.d('error at hidden layer %f' % self.error)
         return self.error
